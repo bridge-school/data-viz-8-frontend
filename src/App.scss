@@ -33,19 +33,19 @@ header {
   font-size: 3rem;
   font-weight: bold;
   background-color: #4E57CA;
-}
 
-header img {
-  height: fit-content;
-  align-self: center;
-}
+  .contentHolder {
+    display: flex;
+  }
 
-header .contentHolder {
-  display: flex;
-}
+  p {
+    margin: 18px 25px 22px 25px;
+  }
 
-header p {
-  margin: 18px 25px 22px 25px;
+  img {
+    height: fit-content;
+    align-self: center;
+  }
 }
 
 .bridgeLogo {
@@ -69,18 +69,18 @@ header p {
   font-size: 2.5rem;
   font-weight: bold;
   border: 1px solid #efeded;
-}
 
-.listItem a {
-  display: block;
-  border-radius: 6px;
-  padding: 25px 40px;
-  box-shadow: none;
-  transition: box-shadow 0.15s ease-in;
-}
+  a {
+    display: block;
+    border-radius: 6px;
+    padding: 25px 40px;
+    box-shadow: none;
+    transition: box-shadow 0.15s ease-in;
 
-.listItem a:hover, .listItem a:focus {
-  box-shadow: 0px 3px 4px rgba(43, 43, 43, 0.2);
+    &:hover, &:focus {
+      box-shadow: 0px 3px 4px rgba(43, 43, 43, 0.2);
+    }
+  }
 }
 
 
