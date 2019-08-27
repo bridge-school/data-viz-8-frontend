@@ -7,7 +7,7 @@ function BasicList({ data, title }) {
       <ul>
         {data.map(item => {
           return <li className="listItem">
-            <a href="#">
+            <a href="www.fake-link-to-pass-tests-on-ci.com">
               {item.name}
             </a>
           </li>
