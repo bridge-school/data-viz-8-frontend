@@ -1,5 +1,11 @@
 /* TODO: Refactor styles with SCSS */
 
+// $lightGrey: 
+$black: #26262A;
+$bridgePurple: #4E57CA;
+$lightGrey: #F0F0F0;
+$boxShadow: 0px 3px 4px rgba(43, 43, 43, 0.2);
+
 /* --- GENERAL STYLES --- */
 html {
   font-size: 62.5%;
@@ -7,7 +13,7 @@ html {
 
 body {
   background-color: white;
-  color: #26262A;
+  color: $black;
   font-size: 1.6rem;
 }
 
@@ -18,7 +24,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #26262A;
+  color: $black;
 }
 
 .wrapper {
@@ -32,7 +38,7 @@ header {
   color: white;
   font-size: 3rem;
   font-weight: bold;
-  background-color: #4E57CA;
+  background-color: $bridgePurple;
 
   .contentHolder {
     display: flex;
@@ -63,7 +69,7 @@ header {
 }
 
 .listItem {
-  background-color: #F0F0F0;
+  background-color: $lightGrey;
   border-radius: 6px;
   margin-bottom: 22px;
   font-size: 2.5rem;
@@ -78,7 +84,7 @@ header {
     transition: box-shadow 0.15s ease-in;
 
     &:hover, &:focus {
-      box-shadow: 0px 3px 4px rgba(43, 43, 43, 0.2);
+      box-shadow: $boxShadow;
     }
   }
 }
