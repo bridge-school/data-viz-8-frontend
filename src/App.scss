@@ -1,6 +1,5 @@
-/* TODO: Refactor styles with SCSS */
-
-// $lightGrey: 
+/* --- TODO: Move vars into separate file, figure out importing --- */
+/* --- VARIABLES --- */
 $black: #26262A;
 $bridgePurple: #4E57CA;
 $lightGrey: #F0F0F0;
@@ -32,61 +31,4 @@ a {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-/* --- HEADER STYLES --- */
-header {
-  color: white;
-  font-size: 3rem;
-  font-weight: bold;
-  background-color: $bridgePurple;
-
-  .contentHolder {
-    display: flex;
-  }
-
-  p {
-    margin: 18px 25px 22px 25px;
-  }
-
-  img {
-    height: fit-content;
-    align-self: center;
-  }
-}
-
-.bridgeLogo {
-  height: 40px;
-  align-self: center;
-  fill: white;
-  width: auto;
-}
-
-/* --- LIST STYLES --- */
-.list h2 {
-  font-size: 3rem;
-  margin-top: 60px;
-  margin-bottom: 35px;
-}
-
-.listItem {
-  background-color: $lightGrey;
-  border-radius: 6px;
-  margin-bottom: 22px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  border: 1px solid #efeded;
-
-  a {
-    display: block;
-    border-radius: 6px;
-    padding: 25px 40px;
-    box-shadow: none;
-    transition: box-shadow 0.15s ease-in;
-
-    &:hover, &:focus {
-      box-shadow: $boxShadow;
-    }
-  }
-}
-
 

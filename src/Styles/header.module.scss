@@ -1,0 +1,24 @@
+$bridgePurple: #4E57CA;
+
+.header {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  background-color: $bridgePurple;
+
+  .contentHolder {
+    display: flex;
+  }
+
+}
+
+.headerText {
+  margin: 18px 25px 22px 25px;
+}
+
+.bridgeLogo {
+  height: 40px;
+  align-self: center;
+  fill: white;
+  width: auto;
+}
