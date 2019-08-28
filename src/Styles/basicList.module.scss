@@ -1,0 +1,29 @@
+$boxShadow: 0px 3px 4px rgba(43, 43, 43, 0.2);
+$lightGrey: #F0F0F0;
+
+.list h2 {
+  font-size: 3rem;
+  margin-top: 60px;
+  margin-bottom: 35px;
+}
+
+.listItem {
+  background-color: $lightGrey;
+  border-radius: 6px;
+  margin-bottom: 22px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: 1px solid #efeded;
+
+  .link {
+    display: block;
+    border-radius: 6px;
+    padding: 25px 40px;
+    box-shadow: none;
+    transition: box-shadow 0.15s ease-in;
+
+    &:hover, &:focus {
+      box-shadow: $boxShadow;
+    }
+  }
+}
