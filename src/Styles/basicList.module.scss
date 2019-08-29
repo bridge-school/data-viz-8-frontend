@@ -1,5 +1,4 @@
-$boxShadow: 0px 3px 4px rgba(43, 43, 43, 0.2);
-$lightGrey: #F0F0F0;
+@import './variables.scss';
 
 .list h2 {
   font-size: 3rem;
@@ -20,7 +19,7 @@ $lightGrey: #F0F0F0;
     border-radius: 6px;
     padding: 25px 40px;
     box-shadow: none;
-    transition: box-shadow 0.15s ease-in;
+    transition: box-shadow 0.1s ease-in;
 
     &:hover, &:focus {
       box-shadow: $boxShadow;

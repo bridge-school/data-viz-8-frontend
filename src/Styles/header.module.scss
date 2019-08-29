@@ -1,4 +1,4 @@
-$bridgePurple: #4E57CA;
+@import './variables.scss';
 
 .header {
   color: white;
@@ -9,7 +9,6 @@ $bridgePurple: #4E57CA;
   .contentHolder {
     display: flex;
   }
-
 }
 
 .headerText {
