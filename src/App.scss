@@ -1,11 +1,5 @@
-/* --- TODO: Move vars into separate file, figure out importing --- */
-/* --- VARIABLES --- */
-$black: #26262A;
-$bridgePurple: #4E57CA;
-$lightGrey: #F0F0F0;
-$boxShadow: 0px 3px 4px rgba(43, 43, 43, 0.2);
+@import './Styles/sharedVariables';
 
-/* --- GENERAL STYLES --- */
 html {
   font-size: 62.5%;
 }
@@ -31,4 +25,3 @@ a {
   max-width: 1200px;
   margin: 0 auto;
 }
-
