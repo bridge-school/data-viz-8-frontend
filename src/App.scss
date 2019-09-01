@@ -1,0 +1,27 @@
+@import './Styles/sharedVariables';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: white;
+  color: $black;
+  font-size: 1.6rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+.wrapper {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}

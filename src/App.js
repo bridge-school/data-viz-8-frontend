@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./App.css";
+import "./App.scss";
 import { request } from "./backend-request";
 import CohortSelectionPage from './Pages/CohortSelectionPage'
 
