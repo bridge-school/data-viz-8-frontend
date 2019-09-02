@@ -2,7 +2,7 @@ import React from "react";
 import classnames from 'classnames';
 import styles from '../Styles/basicList.module.scss'
 
-function BasicList({ data, title }) {
+function BasicLinkList({ data, title }) {
   return (
     <div className={styles.list}>
       <h2>{title}</h2>
@@ -35,4 +35,4 @@ function BasicList({ data, title }) {
   )
 }
 
-export default BasicList;
+export default BasicLinkList;
