@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.scss";
 import { request } from "./backend-request";
-// import CohortSelectionPage from './Pages/CohortSelectionPage'
 import CohortTypeSelectionPage from './Pages/CohortTypeSelectionPage'
 
 function App() {
