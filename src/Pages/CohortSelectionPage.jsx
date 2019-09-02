@@ -2,7 +2,7 @@ import React from "react";
 import BasicList from '../Components/BasicList'
 import Header from '../Components/Header'
 
-function CohortSelectionScreen() {
+function CohortSelectionPage() {
   return (
     <>
       <div className="App">
@@ -20,4 +20,4 @@ function CohortSelectionScreen() {
   )
 }
 
-export default CohortSelectionScreen;
+export default CohortSelectionPage;
