@@ -1,6 +1,8 @@
 import React from "react";
+
 import Header from '../Components/Header'
 import BasicLinkList from '../Components/BasicLinkList'
+
 
 function CohortTypeSelectionPage() {
   return (
@@ -9,9 +11,9 @@ function CohortTypeSelectionPage() {
         <Header />
         <div className="wrapper">
           <BasicLinkList title="Bridge School Programs" data={[
-            { name: 'Frontend Development' },
-            { name: 'Backend Development', disabled: true },
-            { name: 'Design', disabled: true },
+            { name: 'Frontend Development', route: "cohorts" },
+            { name: 'Backend Development', disabled: true , route: ""},
+            { name: 'Design', disabled: true, route: ""},
           ]}/>
         </div>
       </div>

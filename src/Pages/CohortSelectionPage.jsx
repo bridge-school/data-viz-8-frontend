@@ -28,7 +28,7 @@ function CohortSelectionScreen() {
           <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
             <VictoryLine
               style={{
-                data: { stroke: "#c43a31" },
+                data: { stroke: "#4E57CA" },
                 parent: { border: "1px solid #ccc" }
               }}
               data={numberOfApplicants}
@@ -53,4 +53,4 @@ function CohortSelectionScreen() {
   )
 }
 
-export default CohortSelectionPage;
+export default CohortSelectionScreen;
