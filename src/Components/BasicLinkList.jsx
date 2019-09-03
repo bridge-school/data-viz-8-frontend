@@ -23,11 +23,11 @@ function BasicLinkList({ data, title}) {
                       </button>
                   )
                   : (
-                    <a 
+                    <button 
                       className={styles.link}
                     >
                       {name}
-                    </a>
+                    </button>
                   )
                 }
               </li>

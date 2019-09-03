@@ -21,9 +21,8 @@ function CohortSelectionScreen() {
   return (
     <>
       <div className="App">
-        <Header />
+        <Header backRoute="/"/>
         <div className="wrapper">
-
 
           <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
             <VictoryLine
@@ -43,9 +42,9 @@ function CohortSelectionScreen() {
 
           {/* TODO: replace this data with data from json dataset, then from the BE, eventually */}
           <BasicLinkList title="Frontend Development Cohorts" data={[
-            { name: 'Cohort 3' },
-            { name: 'Cohort 2' },
-            { name: 'Cohort 1' },
+            { name: 'Cohort 3', route:"" },
+            { name: 'Cohort 2', route:""  },
+            { name: 'Cohort 1', route:""  },
           ]} />
         </div>
       </div>
