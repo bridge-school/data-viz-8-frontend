@@ -12,17 +12,32 @@
   margin-bottom: 22px;
   font-size: 2.5rem;
   font-weight: bold;
-  border: 1px solid #efeded;
 
   .link {
+    border: 1px solid #efeded;
     display: block;
     border-radius: 6px;
     padding: 25px 40px;
     box-shadow: none;
     transition: box-shadow 0.1s ease-in;
-
+  
     &:hover, &:focus {
       box-shadow: $boxShadow;
+    }
+  }
+
+  .disabledLink {
+    color: #b3b3b3;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left;
+    background-color: $disabledGrey;
+    width: 100%;
+    border: none;
+
+    &:hover, &:focus {
+      box-shadow: none;
+      cursor: default;
     }
   }
 }

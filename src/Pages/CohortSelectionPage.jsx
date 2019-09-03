@@ -1,5 +1,5 @@
 import React from "react";
-import BasicList from '../Components/BasicList'
+import BasicLinkList from '../Components/BasicLinkList'
 import Header from '../Components/Header'
 import { VictoryChart, VictoryLine } from 'victory';
 
@@ -42,7 +42,7 @@ function CohortSelectionScreen() {
           </VictoryChart>
 
           {/* TODO: replace this data with data from json dataset, then from the BE, eventually */}
-          <BasicList title="Frontend Development Cohorts" data={[
+          <BasicLinkList title="Frontend Development Cohorts" data={[
             { name: 'Cohort 3' },
             { name: 'Cohort 2' },
             { name: 'Cohort 1' },
@@ -53,4 +53,4 @@ function CohortSelectionScreen() {
   )
 }
 
-export default CohortSelectionScreen;
+export default CohortSelectionPage;
