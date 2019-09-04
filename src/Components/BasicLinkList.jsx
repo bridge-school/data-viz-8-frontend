@@ -9,9 +9,11 @@ function BasicLinkList({ data, title}) {
     <div className={styles.list}>
       <h2>{title}</h2>
       <ul>
-        {data.map(({ name, disabled, route }) => {
+        {data.map(({ name, disabled, route, query }) => {
           return (
-            <Link to={`/${route}`} >
+            <Link to={{
+              pathname: `/${route}`, 
+              search: query}} >
               <li className={styles.listItem} key={name}>
                 {
                   disabled ? (

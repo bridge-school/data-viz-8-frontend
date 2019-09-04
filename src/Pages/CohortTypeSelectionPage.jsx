@@ -11,9 +11,9 @@ function CohortTypeSelectionPage() {
         <Header />
         <div className="wrapper">
           <BasicLinkList title="Bridge School Programs" data={[
-            { name: 'Frontend Development', route: "cohorts" },
-            { name: 'Backend Development', disabled: true , route: ""},
-            { name: 'Design', disabled: true, route: ""},
+            { name: 'Frontend Development', route: "cohorts", query:"?type=front end" },
+            { name: 'Backend Development', disabled: true , route: "", query: ""},
+            { name: 'Design', disabled: true, route: "", query: ""},
           ]}/>
         </div>
       </div>

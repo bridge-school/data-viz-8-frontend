@@ -14,11 +14,11 @@
 }
 
 .listItem {
-  background-color: $lightGrey;
   border-radius: 6px;
   margin-bottom: 22px;
   
   .link {
+    background-color: $lightGrey;
     border: 1px solid #efeded;
     display: block;
     width: 100%;
