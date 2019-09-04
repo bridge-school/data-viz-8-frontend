@@ -4,7 +4,7 @@ import { request } from "./backend-request";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import CohortTypeSelectionPage from './Pages/CohortTypeSelectionPage';
-import CohortSelectionScreen from './Pages/CohortSelectionPage';
+import CohortSelectionPage from './Pages/CohortSelectionPage';
 
 function App() {
   useEffect(() => {
@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={CohortTypeSelectionPage} />
-      <Route path="/cohorts" component={CohortSelectionScreen} />
+      <Route path="/cohorts" component={CohortSelectionPage} />
     </Router>
   );
 }

@@ -3,7 +3,7 @@ import BasicLinkList from '../Components/BasicLinkList'
 import Header from '../Components/Header'
 import { VictoryChart, VictoryLine } from 'victory';
 
-function CohortSelectionScreen() {
+function CohortSelectionPage() {
   const numberOfApplicants = [
     { x: "Cohort 4", y: 0 },
     { x: "Cohort 5", y: 0 },
@@ -52,4 +52,4 @@ function CohortSelectionScreen() {
   )
 }
 
-export default CohortSelectionScreen;
+export default CohortSelectionPage;
