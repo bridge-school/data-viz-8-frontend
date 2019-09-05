@@ -20,7 +20,7 @@ function App() {
       <Route path="/cohorts" component={CohortSelectionPage} />
 
       {/* TODO: not sure if CohortDetailsPage route should live here, but included here for testing */}
-      {/* <Route path="/" component={CohortDetailsPage} /> */}
+      <Route path="/cohortdetails" component={CohortDetailsPage} />
     </Router>
   );
 }
