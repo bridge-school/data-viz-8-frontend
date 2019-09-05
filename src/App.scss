@@ -25,3 +25,35 @@ a {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+// TODO: move these into components/component styles?
+.twoColumns{
+  display: flex;
+  align-items: stretch;
+  @include md {
+    flex-direction: column;
+  }
+}
+
+.sidebar{
+  > *{
+    display: block;
+    width: 100%;
+  }
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+
+  @include md {
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    > *{
+      width: auto;
+    }
+    h3{
+      width: 100%
+    }
+  }
+
+}

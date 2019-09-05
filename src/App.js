@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import CohortTypeSelectionPage from './Pages/CohortTypeSelectionPage';
 import CohortSelectionPage from './Pages/CohortSelectionPage';
+import CohortDetailsPage from './Pages/CohortDetailsPage';
 
 function App() {
   useEffect(() => {
@@ -15,8 +16,10 @@ function App() {
   });
   return (
     <Router>
-      <Route exact path="/" component={CohortTypeSelectionPage} />
-      <Route path="/cohorts" component={CohortSelectionPage} />
+      {/* NOTE: just testing page before hooking into router */}
+      <Route exact path="/" component={CohortDetailsPage} />
+      {/* <Route exact path="/" component={CohortTypeSelectionPage} />
+      <Route path="/cohorts" component={CohortSelectionPage} /> */}
     </Router>
   );
 }
