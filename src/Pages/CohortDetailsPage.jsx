@@ -2,7 +2,9 @@ import React from "react";
 import { VictoryChart, VictoryBar} from 'victory';
 import Header from '../Components/Header';
 
+import Sidebar from '../Components/Sidebar'
 import BasicButton from '../Components/BasicButton';
+
 
 function CohortDetailsPage() {
     const sampleData = [
@@ -20,16 +22,18 @@ function CohortDetailsPage() {
                     {/* TODO: add cohort name here from url or state */}
                     <h2>Cohort X Breakdown</h2>
 
-                    <div className="twoColumns">
+                    <div className="flexWrapper">
 
-                        <section className="sidebar">
+                        <Sidebar>
                             <h3>Filter Applicants by:</h3>
-                            {/* TODO: look at how to toggle active filter indicator (router?) */}
-                            <BasicButton text="Gender Identity" acitve={true}/>
-                            <BasicButton text="Identities"/>
+                            {/* TODO: look at how to toggle active filter (router?) */}
+                            <BasicButton text="Gender Identity"/>
+                            <BasicButton 
+                                text="Minority Group"  
+                                active={true}/>
                             <BasicButton text="Bootcamps"/>
                             <BasicButton text="Employment Status"/>
-                        </section>
+                        </Sidebar>
 
 
                         <VictoryChart

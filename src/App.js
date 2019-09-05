@@ -16,10 +16,11 @@ function App() {
   });
   return (
     <Router>
-      {/* NOTE: just testing page before hooking into router */}
-      <Route exact path="/" component={CohortDetailsPage} />
-      {/* <Route exact path="/" component={CohortTypeSelectionPage} />
-      <Route path="/cohorts" component={CohortSelectionPage} /> */}
+      <Route exact path="/" component={CohortTypeSelectionPage} />
+      <Route path="/cohorts" component={CohortSelectionPage} />
+
+      {/* TODO: not sure if CohortDetailsPage route should live here, but included here for testing */}
+      {/* <Route path="/" component={CohortDetailsPage} /> */}
     </Router>
   );
 }

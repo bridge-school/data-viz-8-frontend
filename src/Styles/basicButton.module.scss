@@ -1,8 +1,8 @@
 @import './sharedVariables';
 
 .button{
-    background-color: $bridgePurple;
-    color: white;
+    background-color: $lightGrey;
+    border: 1px solid #efeded;
     padding: 1em 2em;
     border-radius: 1.5em;
     cursor: pointer;
@@ -10,7 +10,6 @@
     font-size: 1.5rem;
     box-shadow: none;
     transition: box-shadow 0.1s ease-in;
-
     margin: .5rem auto;
 
     &:hover, &:focus {
@@ -18,13 +17,9 @@
     }
 
     &.active{
-        background-color: hotpink;
+        background-color: $bridgePurple;
+        color: white;
     }
-
-}
-
-.active{
-    color: pink;
 }
 
 
