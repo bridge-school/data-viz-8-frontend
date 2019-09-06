@@ -24,6 +24,14 @@ function CohortSelectionPage() {
         <Header backRoute="/"/>
         <div className="wrapper">
 
+          {/* TODO: replace this data with data from json dataset, then from the BE, eventually */}
+          <BasicLinkList title="Frontend Development Cohorts" data={[
+            { name: 'Cohort 3', route:"" },
+            { name: 'Cohort 2', route:"" },
+            { name: 'Cohort 1', route:"" },
+          ]} />
+
+          <h2>Number of Applicants by Cohort</h2>
           <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
             <VictoryLine
               style={{
@@ -39,13 +47,6 @@ function CohortSelectionPage() {
               width={400}
             />
           </VictoryChart>
-
-          {/* TODO: replace this data with data from json dataset, then from the BE, eventually */}
-          <BasicLinkList title="Frontend Development Cohorts" data={[
-            { name: 'Cohort 3', route:"" },
-            { name: 'Cohort 2', route:""  },
-            { name: 'Cohort 1', route:""  },
-          ]} />
         </div>
       </div>
     </>

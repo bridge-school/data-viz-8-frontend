@@ -25,3 +25,12 @@ a {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+// TODO: move these into components/component styles?
+.flexWrapper{
+  display: flex;
+  align-items: stretch;
+  @include md {
+    flex-direction: column;
+  }
+}
