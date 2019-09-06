@@ -1,6 +1,5 @@
 import React from "react";
 import BasicLinkList from '../Components/BasicLinkList'
-import Header from '../Components/Header'
 import { VictoryChart, VictoryLine } from 'victory';
 
 function CohortSelectionPage() {
@@ -36,25 +35,24 @@ function CohortSelectionPage() {
         <div className="wrapper">
           {/* TODO: replace this data with data from json dataset, then from the BE, eventually */}
           <BasicLinkList title="Frontend Development Cohorts" data={cohortRouteMap} />
+
+          <h2>Number of Applicants per Cohort</h2>
+          <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
+            <VictoryLine
+              style={{
+                data: { stroke: "#4E57CA" },
+                parent: { border: "1px solid #ccc" }
+              }}
+              data={numberOfApplicants}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 }
+              }}
+              labels={({ datum }) => datum.y}
+              width={400}
+            />
+          </VictoryChart>
         </div>
-
-        <h2>Number of Applicants per Cohort</h2>
-        <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
-          <VictoryLine
-            style={{
-              data: { stroke: "#4E57CA" },
-              parent: { border: "1px solid #ccc" }
-            }}
-            data={numberOfApplicants}
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 1000 }
-            }}
-            labels={({ datum }) => datum.y}
-            width={400}
-          />
-        </VictoryChart>
-
       </div>
     </>
   )

@@ -20,11 +20,11 @@ function App() {
       <Router>
         <Header />
         {/* <Header backRoute="/" /> */}
-        <switch>
+        <Switch>
           <Route exact path="/" component={CohortTypeSelectionPage} />
           <Route exact path="/fed" component={CohortSelectionPage} />
           <Route path="/fed/cohorts/:id" component={CohortDetailPage} />
-        </switch>
+        </Switch>
       </Router>
     </>
   );
