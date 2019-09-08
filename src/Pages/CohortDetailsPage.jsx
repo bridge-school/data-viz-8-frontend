@@ -1,53 +1,58 @@
 import React from "react";
-import { VictoryChart, VictoryBar} from 'victory';
-import Header from '../Components/Header';
-
 import Sidebar from '../Components/Sidebar'
-import BasicButton from '../Components/BasicButton';
+import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
+import BasicButtonList from "../Components/BasicButtonList";
 
 
-function CohortDetailsPage() {
-    const sampleData = [
-        { x: "Person of Colour", y: 15 },
-        { x: "LGBTQIA+", y: 5 },
-        { x: "Prefer not to disclose", y: 5 },
-        { x: "No response", y: 10 }
-    ]
+function CohortDetailsPage({ match }) {
+    const sampleData = {
+        minority: [
+            { x: "Person of Colour", y: 15 },
+            { x: "LGBTQIA+", y: 5 },
+            { x: "Prefer not to disclose", y: 5 },
+            { x: "No response", y: 10 }
+        ]
+    };
+
+    const listOfFilters = [
+        {
+            text: "Gender Identity",
+            active: false
+        },
+        {
+            text: "Minority Group",
+            active: false
+        },
+        {
+            text: "Bootcamps",
+            active: true
+        },
+        {
+            text: "Employment Status",
+            active: false
+        },
+    ];
 
     return (
         <>
             <div className="App">
-                <Header backRoute="/cohorts"/>
                 <div className="wrapper">
                     {/* TODO: add cohort name here from url or state */}
-                    <h2>Cohort X Breakdown</h2>
+                    <h2>Cohort {match.params.id} Applicants</h2>
 
                     <div className="flexWrapper">
 
                         <Sidebar>
                             <h3>Filter Applicants by:</h3>
                             {/* TODO: look at how to toggle active filter (router?) */}
-                            <BasicButton text="Gender Identity"/>
-                            <BasicButton 
-                                text="Minority Group"  
-                                active={true}/>
-                            <BasicButton text="Bootcamps"/>
-                            <BasicButton text="Employment Status"/>
+
+                            <BasicButtonList data={listOfFilters} />
                         </Sidebar>
 
 
-                        <VictoryChart
-                            // TODO: come up with our own Victory theme?
-                            // theme={VictoryTheme.material}
-                            domainPadding={10}
-                        >
-                        <VictoryBar
-                            style={{ data: { fill: "#4E57CA" } }}
-                            data={sampleData}
-                        />
-                        </VictoryChart>
+                        <ChartMinorityPerCohort data={sampleData.minority} />
                     </div>
-                    
+
                 </div>
             </div>
         </>
