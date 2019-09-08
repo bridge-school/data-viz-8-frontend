@@ -1,6 +1,6 @@
 import React from "react";
 import BasicLinkList from '../Components/BasicLinkList'
-import { VictoryChart, VictoryLine } from 'victory';
+import ChartApplicantsPerCohort from '../Components/ChartApplicantsPerCohort'
 
 function CohortSelectionPage() {
   const numberOfApplicants = [
@@ -23,12 +23,6 @@ function CohortSelectionPage() {
       }
     });
 
-  const maxDomainValue =
-    numberOfApplicants
-      .map(item => item.y)
-      .reduce((currentMax, currentItem) => Math.max(currentMax, currentItem))
-    + 10;
-
   return (
     <>
       <div className="App">
@@ -37,21 +31,7 @@ function CohortSelectionPage() {
           <BasicLinkList title="Frontend Development Cohorts" data={cohortRouteMap} />
 
           <h2>Number of Applicants per Cohort</h2>
-          <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
-            <VictoryLine
-              style={{
-                data: { stroke: "#4E57CA" },
-                parent: { border: "1px solid #ccc" }
-              }}
-              data={numberOfApplicants}
-              animate={{
-                duration: 2000,
-                onLoad: { duration: 1000 }
-              }}
-              labels={({ datum }) => datum.y}
-              width={400}
-            />
-          </VictoryChart>
+          <ChartApplicantsPerCohort numberOfApplicants={numberOfApplicants} />
         </div>
       </div>
     </>

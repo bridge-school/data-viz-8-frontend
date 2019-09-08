@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import CohortTypeSelectionPage from './Pages/CohortTypeSelectionPage';
 import CohortSelectionPage from './Pages/CohortSelectionPage';
-import CohortDetailPage from './Pages/CohortDetailPage';
+import CohortDetailsPage from './Pages/CohortDetailsPage';
 import Header from './Components/Header';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={CohortTypeSelectionPage} />
           <Route exact path="/fed" component={CohortSelectionPage} />
-          <Route path="/fed/cohorts/:id" component={CohortDetailPage} />
+          <Route path="/fed/cohorts/:id" component={CohortDetailsPage} />
         </Switch>
       </Router>
     </>
