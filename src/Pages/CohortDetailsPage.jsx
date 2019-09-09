@@ -2,16 +2,35 @@ import React from "react";
 import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
-
+import dummyData from '../DummyData/cohortDummyData'
 
 function CohortDetailsPage({ match }) {
+
+    // TODO: replace cohort data in state/api call for cohort by id
+    // cohort key format: cohort-X
+    let cohort;
+    for (var i in dummyData){
+        if(i.split("-")[1] === match.params.id) cohort = dummyData[i];
+    }
+
+    // TODO: make into a more generic helper function to filter a variety of ways?
+    const minorityBreakdown = cohort.applicants
+        .reduce((accumulator, applicant) => {
+            // TODO: return to this, find a cleaner way that doesn't through an error
+            // eslint-disable-next-line
+            applicant.identities.map( identity  => {
+                if(!accumulator.hasOwnProperty(identity)) accumulator[identity]= 0
+                accumulator[identity] ++
+            })
+            return accumulator;
+        }, {})
+    const minorityGraphData = Object.entries(minorityBreakdown)
+        .map(minority => (
+            {x: minority[0], y: minority[1]}
+        ))
+
     const sampleData = {
-        minority: [
-            { x: "Person of Colour", y: 15 },
-            { x: "LGBTQIA+", y: 5 },
-            { x: "Prefer not to disclose", y: 5 },
-            { x: "No response", y: 10 }
-        ]
+        minority: minorityGraphData
     };
 
     const listOfFilters = [
@@ -21,11 +40,11 @@ function CohortDetailsPage({ match }) {
         },
         {
             text: "Minority Group",
-            active: false
+            active: true
         },
         {
             text: "Bootcamps",
-            active: true
+            active: false
         },
         {
             text: "Employment Status",
@@ -37,7 +56,6 @@ function CohortDetailsPage({ match }) {
         <>
             <div className="App">
                 <div className="wrapper">
-                    {/* TODO: add cohort name here from url or state */}
                     <h2>Cohort {match.params.id} Applicants</h2>
 
                     <div className="flexWrapper">

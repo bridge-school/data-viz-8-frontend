@@ -10,7 +10,7 @@ function ChartMinorityPerCohort({ data }) {
         >
             <VictoryBar
                 style={{ data: { fill: "#4E57CA" } }}
-                data={data.minority}
+                data={data}
             />
         </VictoryChart>
     );

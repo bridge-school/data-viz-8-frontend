@@ -1,20 +1,29 @@
 import React from "react";
 import BasicLinkList from '../Components/BasicLinkList'
 import ChartApplicantsPerCohort from '../Components/ChartApplicantsPerCohort'
+import dummyData from '../DummyData/cohortDummyData'
 
 function CohortSelectionPage() {
-  const numberOfApplicants = [
-    // { x: "Cohort 1", y: 0 },
-    // { x: "Cohort 2", y: 0 },
-    // { x: "Cohort 3", y: 0 },
-    // { x: "Cohort 4", y: 0 },
-    { x: "Cohort 5", y: 0 },
-    { x: "Cohort 6", y: 43 },
-    { x: "Cohort 7", y: 44 },
-    { x: "Cohort 8", y: 43 }
-  ];
 
-  const cohortRouteMap = numberOfApplicants
+  //TODO: replace this with cohort type API call
+  const cohorts = [];
+  for (var i in dummyData){
+    if(dummyData[i].type === "frontEnd"){
+      dummyData[i].cohortNumber = i.split("-")[1];
+      cohorts.push(dummyData[i]);
+    }
+  }
+  cohorts.sort((a, b) => (a.cohortNumber - b.cohortNumber));
+
+  const cohortApplicationsGraphData = cohorts
+    .map((cohort) => (
+      {
+        x: `Cohort ${cohort.cohortNumber}`,
+        y: cohort.applicants.length
+      }
+  ))
+
+  const cohortRouteMap = cohortApplicationsGraphData
     .map((cohort) => {
       return {
         disabled: cohort.y === 0,
@@ -27,11 +36,9 @@ function CohortSelectionPage() {
     <>
       <div className="App">
         <div className="wrapper">
-          {/* TODO: replace this data with data from json dataset, then from the BE, eventually */}
           <BasicLinkList title="Frontend Development Cohorts" data={cohortRouteMap} />
-
           <h2>Number of Applicants per Cohort</h2>
-          <ChartApplicantsPerCohort numberOfApplicants={numberOfApplicants} />
+          <ChartApplicantsPerCohort numberOfApplicants={cohortApplicationsGraphData} />
         </div>
       </div>
     </>

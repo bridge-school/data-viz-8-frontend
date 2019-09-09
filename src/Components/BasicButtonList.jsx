@@ -4,7 +4,7 @@ import BasicButton from "../Components/BasicButton";
 function BasicButtonList({ data }) {
     return (
         <>
-            {data.map(({ text, active }) => <BasicButton text={text} active={active} />)}
+            {data.map(({ text, active }, index) => <BasicButton key={index} text={text} active={active} />)}
         </>
     );
 }
