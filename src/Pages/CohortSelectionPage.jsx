@@ -36,9 +36,8 @@ function CohortSelectionPage() {
     <>
       <div className="App">
         <div className="wrapper">
-          <BasicLinkList title="Frontend Development Cohorts" data={cohortRouteMap} />
-          <h2>Number of Applicants per Cohort</h2>
           <ChartApplicantsPerCohort numberOfApplicants={cohortApplicationsGraphData} />
+          <BasicLinkList title="Frontend Development Cohorts" data={cohortRouteMap} />
         </div>
       </div>
     </>
