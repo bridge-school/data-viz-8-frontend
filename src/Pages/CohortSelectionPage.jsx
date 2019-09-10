@@ -1,44 +1,52 @@
 import React from "react";
 import BasicLinkList from '../Components/BasicLinkList'
 import Header from '../Components/Header'
-import { VictoryChart, VictoryLine } from 'victory';
+import { VictoryChart, VictoryLine, VictoryLabel } from 'victory';
+import styles from '../Styles/graphs.module.scss'
+import materialTheme from '../Styles/victoryMaterialTheme'
 
 function CohortSelectionPage() {
-  const numberOfApplicants = [
-    { x: "Cohort 4", y: 0 },
-    { x: "Cohort 5", y: 0 },
-    { x: "Cohort 6", y: 43 },
-    { x: "Cohort 7", y: 44 },
-    { x: "Cohort 8", y: 43 }
-  ];
-
-  const maxDomainValue =
-    numberOfApplicants
-      .map(item => item.y)
-      .reduce((currentMax, currentItem) => Math.max(currentMax, currentItem))
-    + 10;
-
   return (
     <>
       <div className="App">
         <Header backRoute="/"/>
         <div className="wrapper">
-
-          <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
+        <div>
+          <VictoryChart
+            animate={{
+              duration: 1200,
+              onLoad: { duration: 1000 }
+            }}
+            theme={materialTheme}
+            height={200}
+          >
+            <VictoryLabel 
+              text="Applicants Over Time" 
+              x='50%' 
+              y='15%' 
+              textAnchor="middle"
+              style={{ fontSize: 12 }}
+            />
+            <VictoryLabel
+              text="All Cohorts"
+              x='50%' 
+              y='93%' 
+              angle={50} 
+              textAnchor="middle"
+              style={{ fontSize: 10 }}
+            />
             <VictoryLine
-              style={{
-                data: { stroke: "#4E57CA" },
-                parent: { border: "1px solid #ccc" }
-              }}
-              data={numberOfApplicants}
-              animate={{
-                duration: 2000,
-                onLoad: { duration: 1000 }
-              }}
-              labels={({ datum }) => datum.y}
-              width={400}
+              data={[
+                { x: "1", y: 35, cohort: 1 },
+                { x: "2", y: 72, cohort: 2 },
+                { x: "3", y: 135, cohort: 3 },
+                { x: "4", y: 197, cohort: 4 },
+                { x: "5", y: 231, cohort: 5 },
+                { x: "6", y: 273, cohort: 6 },
+              ]}
             />
           </VictoryChart>
+        </div>
 
           {/* TODO: replace this data with data from json dataset, then from the BE, eventually */}
           <BasicLinkList title="Frontend Development Cohorts" data={[

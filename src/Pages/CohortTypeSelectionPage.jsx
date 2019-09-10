@@ -1,8 +1,6 @@
 import React from "react";
-
 import Header from '../Components/Header'
 import BasicLinkList from '../Components/BasicLinkList'
-
 
 function CohortTypeSelectionPage() {
   return (
