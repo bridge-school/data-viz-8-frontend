@@ -1,10 +1,13 @@
 import React from "react";
+import { useTranslation } from 'react-i18next'
+
 import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
 
-function CohortDetailsPage({ match }) {
+const CohortDetailsPage = ({ match }) => {
+    const { t } = useTranslation()
 
     // TODO: replace cohort data in state/api call for cohort by id
     // cohort key format: cohort-X
@@ -24,6 +27,7 @@ function CohortDetailsPage({ match }) {
             })
             return accumulator;
         }, {})
+
     const minorityGraphData = Object.entries(minorityBreakdown)
         .map(minority => (
             {x: minority[0], y: minority[1]}
@@ -35,19 +39,19 @@ function CohortDetailsPage({ match }) {
 
     const listOfFilters = [
         {
-            text: "Gender Identity",
+            text: t('gender_identity'),
             active: false
         },
         {
-            text: "Minority Group",
+            text: t('minority_group'),
             active: true
         },
         {
-            text: "Bootcamps",
+            text: t('bootcamps'),
             active: false
         },
         {
-            text: "Employment Status",
+            text: t('employment_status'),
             active: false
         },
     ];
@@ -56,21 +60,18 @@ function CohortDetailsPage({ match }) {
         <>
             <div className="App">
                 <div className="wrapper">
-                    <h2>Cohort {match.params.id} Applicants</h2>
+                    <h2>{t('cohort')} {match.params.id} {t('applicants')}</h2>
 
                     <div className="flexWrapper">
-
                         <Sidebar>
-                            <h3>Filter Applicants by:</h3>
+                            <h3>{t('filter_applicants')}</h3>
                             {/* TODO: look at how to toggle active filter (router?) */}
 
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
 
-
                         <ChartMinorityPerCohort data={sampleData.minority} />
                     </div>
-
                 </div>
             </div>
         </>

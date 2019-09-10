@@ -1,0 +1,15 @@
+{
+  "cohort_application_data": "Datos de Solicitud de Cohorte",
+  "frontend_dev_cohorts": "Cohortes de Desarrollo Frontend",
+  "cohort": "Cohorte",
+  "bridge_school_programs": "Programas de la Escuela Bridge",
+  "frontend_dev": "Desarrollo Front-End",
+  "backend_dev": "Desarrollo Back-End",
+  "design": "Diseño",
+  "applicants": "Solicitantes",
+  "gender_identity": "Identidad de Género",
+  "minority_group": "Grupo Minoritario",
+  "bootcamps": "Campamentos de Entrenamiento",
+  "employment_status": "Estado de Empleo",
+  "filter_applicants": "Filtrar Solicitantes por"
+}
