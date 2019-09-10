@@ -1,18 +1,30 @@
 import React from "react";
-import Header from '../Components/Header'
 import BasicLinkList from '../Components/BasicLinkList'
 
 function CohortTypeSelectionPage() {
+  const options = [
+    {
+      name: 'Front-End Development',
+      disabled: false,
+      route: "/fed"
+    },
+    {
+      name: 'Back-End Development',
+      disabled: true,
+      route: "",
+    },
+    {
+      name: 'Design',
+      disabled: true,
+      route: "",
+    },
+  ];
+
   return (
     <>
       <div className="App">
-        <Header />
         <div className="wrapper">
-          <BasicLinkList title="Bridge School Programs" data={[
-            { name: 'Frontend Development', route: "cohorts", query:"?type=front end" },
-            { name: 'Backend Development', disabled: true , route: "", query: ""},
-            { name: 'Design', disabled: true, route: "", query: ""},
-          ]}/>
+          <BasicLinkList title="Bridge School Programs" data={options} />
         </div>
       </div>
     </>

@@ -22,10 +22,10 @@ const grey900 = "#212121";
 // Typography
 const sansSerif = "'Roboto', 'Helvetica Neue', Helvetica, sans-serif";
 const letterSpacing = "normal";
-const fontSize = 7;
+const fontSize = 5;
 
 // Layout
-const padding = 5;
+const padding = 3;
 const baseProps = {
   width: 350,
   height: 350,

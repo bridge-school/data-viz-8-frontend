@@ -5,6 +5,9 @@
   color: white;
   font-size: 3rem;
   font-weight: bold;
+  @include md{
+    font-size: 2rem;
+  }
 }
 
 .header {
@@ -28,6 +31,5 @@
 
 .backBtn{
   position: absolute;
-  top: .5em;
   left: 1em;
 }
