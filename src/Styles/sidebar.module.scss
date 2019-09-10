@@ -1,0 +1,23 @@
+@import './sharedVariables';
+
+.sidebar{
+    > *{
+      display: block;
+      width: 100%;
+    }
+    display: flex;
+    flex-direction: column;
+    min-width: 20rem;
+  
+    @include md {
+      flex-direction: row;
+      width: 100%;
+      flex-wrap: wrap;
+      > *{
+        width: auto;
+      }
+      h3{
+        width: 100%
+      }
+    }
+  }

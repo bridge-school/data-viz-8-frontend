@@ -1,13 +1,20 @@
 @import './sharedVariables';
 
-.header {
+.header,
+.header *{
   color: white;
   font-size: 3rem;
   font-weight: bold;
-  background-color: $bridgePurple;
+  @include md{
+    font-size: 2rem;
+  }
+}
 
+.header {
+  background-color: $bridgePurple;
   .contentHolder {
     display: flex;
+    align-items: center;
   }
 }
 
@@ -20,4 +27,9 @@
   align-self: center;
   fill: white;
   width: auto;
+}
+
+.backBtn{
+  position: absolute;
+  left: 1em;
 }

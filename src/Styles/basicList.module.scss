@@ -6,20 +6,27 @@
   margin-bottom: 35px;
 }
 
-.listItem {
-  background-color: $lightGrey;
-  border-radius: 6px;
-  margin-bottom: 22px;
+.listItem,
+.listItem *{
   font-size: 2.5rem;
   font-weight: bold;
+  text-align: left;
+}
 
+.listItem {
+  border-radius: 6px;
+  margin-bottom: 22px;
+  
   .link {
+    background-color: $lightGrey;
     border: 1px solid #efeded;
     display: block;
+    width: 100%;
     border-radius: 6px;
     padding: 25px 40px;
     box-shadow: none;
     transition: box-shadow 0.1s ease-in;
+    cursor: pointer;
   
     &:hover, &:focus {
       box-shadow: $boxShadow;
