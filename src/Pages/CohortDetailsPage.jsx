@@ -22,6 +22,8 @@ const CohortDetailsPage = ({ match }) => {
             // TODO: return to this, find a cleaner way that doesn't through an error
             // eslint-disable-next-line
             applicant.identities.map( identity  => {
+                // eslint-disable-next-line 
+                if(identity === "") return
                 if(!accumulator.hasOwnProperty(identity)) accumulator[identity]= 0
                 accumulator[identity] ++
             })

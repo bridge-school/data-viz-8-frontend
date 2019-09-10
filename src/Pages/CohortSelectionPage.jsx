@@ -37,8 +37,8 @@ const CohortSelectionPage = () => {
     <>
       <div className="App">
         <div className="wrapper">
-          <ChartApplicantsPerCohort numberOfApplicants={cohortApplicationsGraphData} />
           <BasicLinkList title="Frontend Development Cohorts" data={cohortRouteMap} />
+          <ChartApplicantsPerCohort numberOfApplicants={cohortApplicationsGraphData} />
         </div>
       </div>
     </>
