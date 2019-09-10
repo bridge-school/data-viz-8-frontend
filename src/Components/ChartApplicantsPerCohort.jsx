@@ -1,5 +1,6 @@
 import React from "react";
-import { VictoryChart, VictoryLine } from 'victory';
+import { VictoryChart, VictoryLine, VictoryLabel } from 'victory';
+import materialTheme from '../Styles/victoryMaterialTheme'
 
 function ChartApplicantsPerCohort({ numberOfApplicants }) {
     const maxDomainValue =
@@ -9,19 +10,33 @@ function ChartApplicantsPerCohort({ numberOfApplicants }) {
         + 10;
 
     return (
-        <VictoryChart minDomain={{ y: 0 }} maxDomain={{ y: maxDomainValue }} >
+        <VictoryChart
+            animate={{
+            duration: 1200,
+            onLoad: { duration: 1000 }
+            }}
+            theme={materialTheme}
+            height={180}
+            minDomain={{ y: 0 }} 
+            maxDomain={{ y: maxDomainValue }}
+        >
+            <VictoryLabel 
+                text="Applicants Over Time" 
+                x='50%' 
+                y='20%' 
+                textAnchor="middle"
+                style={{ fontSize: 10 }}
+            />
+            <VictoryLabel
+                text="All Cohorts"
+                x='50%' 
+                y='88%' 
+                angle={50} 
+                textAnchor="middle"
+                style={{ fontSize: 8 }}
+            />
             <VictoryLine
-                style={{
-                    data: { stroke: "#4E57CA" },
-                    parent: { border: "1px solid #ccc" }
-                }}
                 data={numberOfApplicants}
-                animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 }
-                }}
-                labels={({ datum }) => datum.y}
-                width={400}
             />
         </VictoryChart>
     );
