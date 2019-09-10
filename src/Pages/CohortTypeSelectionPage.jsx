@@ -1,20 +1,23 @@
 import React from "react";
+import { useTranslation } from 'react-i18next'
 import BasicLinkList from '../Components/BasicLinkList'
 
-function CohortTypeSelectionPage() {
+const CohortTypeSelectionPage = () => {
+  const { t } = useTranslation()
+
   const options = [
     {
-      name: 'Front-End Development',
+      name: t('frontend_dev'),
       disabled: false,
       route: "/fed"
     },
     {
-      name: 'Back-End Development',
+      name: t('backend_dev'),
       disabled: true,
       route: "",
     },
     {
-      name: 'Design',
+      name: t('design'),
       disabled: true,
       route: "",
     },
@@ -24,7 +27,7 @@ function CohortTypeSelectionPage() {
     <>
       <div className="App">
         <div className="wrapper">
-          <BasicLinkList title="Bridge School Programs" data={options} />
+          <BasicLinkList title={t('bridge_school_programs')} data={options} />
         </div>
       </div>
     </>
