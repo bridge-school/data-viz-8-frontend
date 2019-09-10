@@ -5,6 +5,7 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
+import {arrayToGraphData} from '../Utils/dataTransform.utils'
 
 const CohortDetailsPage = ({ match }) => {
     const { t } = useTranslation()
@@ -16,25 +17,13 @@ const CohortDetailsPage = ({ match }) => {
         if(i.split("-")[1] === match.params.id) cohort = dummyData[i];
     }
 
-    // TODO: make into a more generic helper function to filter a variety of ways?
-    const minorityBreakdown = cohort.applicants
-        .reduce((accumulator, applicant) => {
-            // TODO: return to this, find a cleaner way that doesn't through an error
-            // eslint-disable-next-line
-            applicant.identities.map( identity  => {
-                if(!accumulator.hasOwnProperty(identity)) accumulator[identity]= 0
-                accumulator[identity] ++
-            })
-            return accumulator;
-        }, {})
-
-    const minorityGraphData = Object.entries(minorityBreakdown)
-        .map(minority => (
-            {x: minority[0], y: minority[1]}
-        ))
+    console.log(cohort.applicants)
+    const minorityGraphData = arrayToGraphData(cohort.applicants, 'identities')
+    const bootcampData = arrayToGraphData(cohort.applicants, 'bootcamps');
 
     const sampleData = {
-        minority: minorityGraphData
+        minority: minorityGraphData,
+        bootcamps: bootcampData
     };
 
     const listOfFilters = [
