@@ -5,7 +5,7 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
-import {arrayToGraphData} from '../Utils/dataTransform.utils'
+import {applicantsToGraphData} from '../Utils/dataTransform.utils'
 
 const CohortDetailsPage = ({ match }) => {
     const { t } = useTranslation()
@@ -17,9 +17,10 @@ const CohortDetailsPage = ({ match }) => {
         if(i.split("-")[1] === match.params.id) cohort = dummyData[i];
     }
 
-    // TODO: make into a more generic helper function to filter a variety of ways?
-    const minorityGraphData = arrayToGraphData(cohort.applicants, 'identities')
-    const bootcampData = arrayToGraphData(cohort.applicants, 'bootcamps');
+    const minorityGraphData = applicantsToGraphData(cohort.applicants, 'identities')
+    const bootcampData = applicantsToGraphData(cohort.applicants, 'bootcamps');
+
+    console.log(minorityGraphData)
 
     const sampleData = {
         minority: minorityGraphData,
