@@ -1,5 +1,5 @@
 import React from "react";
-import { VictoryChart, VictoryBar, VictoryLabel } from 'victory';
+import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from 'victory';
 import materialTheme from '../Styles/victoryMaterialTheme';
 
 function ChartMinorityPerCohort({ data }) {
@@ -24,12 +24,20 @@ function ChartMinorityPerCohort({ data }) {
             style={{
                 parent: {
                     position: 'relative',
-                    top: '-80px'
-                }
+                    top: '-80px',
+                    height: '220'
+                },
             }}
             height={220}
             labelComponent={ <VictoryLabel /> }
         >
+        <VictoryAxis
+            tickLabelComponent={<VictoryLabel angle={45} textAnchor='start' />}
+        />
+        <VictoryAxis 
+            dependentAxis
+            theme={materialTheme}
+        />
             <VictoryBar
                 data={data}
                 labels={({ datum }) => findResponsePercentage(datum.y)}
