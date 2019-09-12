@@ -90,12 +90,12 @@ export default {
           stroke: blueGrey300,
           strokeWidth: 1,
           strokeLinecap,
-          strokeLinejoin
+          strokeLinejoin,
+          zIndex: 9999
         },
         tickLabels: assign({}, baseLabelStyles, {
           fill: blueGrey700,
-          // angle: 45,
-          // textAnchor: 'start',
+          zIndex: 9999
         })
       }
     },

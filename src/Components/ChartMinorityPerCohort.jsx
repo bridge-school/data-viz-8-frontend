@@ -24,12 +24,12 @@ function ChartMinorityPerCohort({ data }) {
             style={{
                 parent: {
                     position: 'relative',
-                    top: '-80px',
-                    height: '220'
-                },
+                    top: '-70px',
+                    left: 50,
+                    height: 220
+                }, 
             }}
             height={220}
-            labelComponent={ <VictoryLabel /> }
         >
         <VictoryAxis
             tickLabelComponent={<VictoryLabel angle={45} textAnchor='start' />}
@@ -37,15 +37,17 @@ function ChartMinorityPerCohort({ data }) {
         <VictoryAxis 
             dependentAxis
             theme={materialTheme}
+            label='Number of Applicants'
+            style={{ axisLabel: { fontSize: 6, padding: 30 }} }
         />
-            <VictoryBar
-                data={data}
-                labels={({ datum }) => findResponsePercentage(datum.y)}
-                style={{
-                    data: { fill: "#4E57CA" },
-                }}
-                labelComponent={ <VictoryLabel dy={-2}/> }
-            />
+        <VictoryBar
+            data={data}
+            labels={({ datum }) => findResponsePercentage(datum.y)}
+            style={{
+                data: { fill: "#4E57CA" },
+            }}
+            labelComponent={ <VictoryLabel dy={-2}/> }
+        />
         </VictoryChart>
     );
 }

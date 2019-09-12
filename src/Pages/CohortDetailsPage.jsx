@@ -66,7 +66,7 @@ const CohortDetailsPage = ({ match }) => {
                     <h2 className={styles.h2}>{t('cohort')} {match.params.id} {t('applicants')}</h2>
                     <div className="flexWrapper">
                         <Sidebar>
-                            <h3 className={styles.h3}>{`${t('filter_applicants')}:`}</h3>
+                            <h3 className={styles.h3}>{`${t('filter_by')}:`}</h3>
                             {/* TODO: look at how to toggle active filter (router?) */}
 
                             <BasicButtonList data={listOfFilters} />
