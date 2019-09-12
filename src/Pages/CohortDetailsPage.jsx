@@ -17,15 +17,13 @@ const CohortDetailsPage = ({ match }) => {
         if(i.split("-")[1] === match.params.id) cohort = dummyData[i];
     }
 
-    const minorityGraphData = applicantsToGraphData(cohort.applicants, 'identities')
-    const bootcampData = applicantsToGraphData(cohort.applicants, 'bootcamps');
-
-    console.log(minorityGraphData)
-
     const sampleData = {
-        minority: minorityGraphData,
-        bootcamps: bootcampData
+        minority: applicantsToGraphData(cohort.applicants, 'identities'),
+        bootcamps: applicantsToGraphData(cohort.applicants, 'bootcamps'),
+        employment: applicantsToGraphData(cohort.applicants, "employmentStatus"),
+        gender: applicantsToGraphData(cohort.applicants, "gender")
     };
+    console.log(sampleData)
 
     const listOfFilters = [
         {
