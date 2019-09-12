@@ -78,7 +78,7 @@ export default {
         }),
         grid: {
           fill: "none",
-          stroke: blueGrey50,
+          stroke: 'transparent',
           strokeDasharray,
           strokeLinecap,
           strokeLinejoin,
@@ -93,7 +93,9 @@ export default {
           strokeLinejoin
         },
         tickLabels: assign({}, baseLabelStyles, {
-          fill: blueGrey700
+          fill: blueGrey700,
+          // angle: 45,
+          // textAnchor: 'start',
         })
       }
     },

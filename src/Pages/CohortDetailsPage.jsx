@@ -5,6 +5,7 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
+import styles from '../Styles/cohortDetailsPage.module.scss'
 
 const CohortDetailsPage = ({ match }) => {
     const { t } = useTranslation()
@@ -62,16 +63,14 @@ const CohortDetailsPage = ({ match }) => {
         <>
             <div className="App">
                 <div className="wrapper">
-                    <h2>{t('cohort')} {match.params.id} {t('applicants')}</h2>
-
+                    <h2 className={styles.h2}>{t('cohort')} {match.params.id} {t('applicants')}</h2>
                     <div className="flexWrapper">
                         <Sidebar>
-                            <h3>{t('filter_applicants')}</h3>
+                            <h3 className={styles.h3}>{`${t('filter_applicants')}:`}</h3>
                             {/* TODO: look at how to toggle active filter (router?) */}
 
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
-
                         <ChartMinorityPerCohort data={sampleData.minority} />
                     </div>
                 </div>
