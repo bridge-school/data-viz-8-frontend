@@ -5,7 +5,7 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
-import styles from '../Styles/cohortDetailsPage.module.scss'
+import styles from '../Styles/general.module.scss'
 
 const CohortDetailsPage = ({ match }) => {
     const { t } = useTranslation()

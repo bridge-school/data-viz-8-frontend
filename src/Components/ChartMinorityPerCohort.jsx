@@ -4,6 +4,7 @@ import materialTheme from '../Styles/victoryMaterialTheme';
 
 function ChartMinorityPerCohort({ data }) {
     const findResponsePercentage = (numberOfResponses) => {
+        // TODO: replace hardcoded value with number from api
         const totalNumberOfApplicants = 135
         return `${Math.round(numberOfResponses/totalNumberOfApplicants*100)}%`
     }

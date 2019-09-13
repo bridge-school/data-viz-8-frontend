@@ -91,11 +91,9 @@ export default {
           strokeWidth: 1,
           strokeLinecap,
           strokeLinejoin,
-          zIndex: 9999
         },
         tickLabels: assign({}, baseLabelStyles, {
           fill: blueGrey700,
-          zIndex: 9999
         })
       }
     },
