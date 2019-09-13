@@ -23,7 +23,6 @@ const CohortDetailsPage = ({ match }) => {
         employment: applicantsToGraphData(cohort.applicants, "employmentStatus"),
         gender: applicantsToGraphData(cohort.applicants, "gender")
     };
-    console.log(sampleData)
 
     const listOfFilters = [
         {

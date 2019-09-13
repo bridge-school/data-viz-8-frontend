@@ -5,6 +5,8 @@ const normalizedAnswers = [
     "Non-binary",
     "Non binary",
     "Woman",
+    "Agender",
+    "A-gender",
 
     "LGBTQIA+",
     "Prefer not to disclose",
