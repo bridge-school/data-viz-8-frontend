@@ -73,7 +73,6 @@ const CohortDetailsPage = ({ match, currentChart }) => {
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
 
-                        {/* <span>{currentChart}</span> */}
                         {(currentChart === "Gender Identity") && <ChartMinorityPerCohort data={sampleData.minority} />}
                         {(currentChart === "Minority Group") && <ChartMinorityPerCohort data={sampleData.minority} />}
                         {(currentChart === "Bootcamps") && <ChartMinorityPerCohort data={sampleData.minority} />}
@@ -86,12 +85,10 @@ const CohortDetailsPage = ({ match, currentChart }) => {
     )
 }
 
-
 const mapStateToProps = state => ({
     ...state
 });
 
 const ConnectedCohortDetailsPage = connect(mapStateToProps)(CohortDetailsPage);
 
-// export default CohortDetailsPage;
 export default ConnectedCohortDetailsPage;

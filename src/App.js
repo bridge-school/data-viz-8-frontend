@@ -20,10 +20,6 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  console.log('reducer');
-  console.log(state);
-  console.log(action);
-
   switch (action.type) {
     case "UPDATE_DETAILS_PAGE":
       return {
@@ -32,10 +28,7 @@ function reducer(state = initialState, action) {
       }
     default:
       return state;
-
   }
-
-  return state;
 }
 
 const store = createStore(reducer);

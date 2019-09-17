@@ -23,9 +23,6 @@ class BasicButton extends Component {
         );
     }
 }
-// - {this.props.currentChart}
-
-// export default BasicButton;
 
 const mapStateToProps = state => ({
     ...state
