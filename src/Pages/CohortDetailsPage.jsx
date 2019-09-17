@@ -5,11 +5,8 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
-<<<<<<< HEAD
 import { connect } from 'react-redux'
-=======
 import styles from '../Styles/general.module.scss'
->>>>>>> f56c242964e5ef6838f8bf22f032feca18494f31
 
 const CohortDetailsPage = ({ match, currentChart }) => {
     const { t } = useTranslation()
