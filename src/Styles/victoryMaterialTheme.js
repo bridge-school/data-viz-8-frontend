@@ -14,7 +14,7 @@ const colors = [
   bridgeSeafoam,
   bridgeBlue,
 ];
-const blueGrey50 = "#ECEFF1";
+
 const blueGrey300 = "#90A4AE";
 const blueGrey700 = "#455A64";
 const grey900 = "#212121";
@@ -78,7 +78,7 @@ export default {
         }),
         grid: {
           fill: "none",
-          stroke: blueGrey50,
+          stroke: 'transparent',
           strokeDasharray,
           strokeLinecap,
           strokeLinejoin,
@@ -90,10 +90,10 @@ export default {
           stroke: blueGrey300,
           strokeWidth: 1,
           strokeLinecap,
-          strokeLinejoin
+          strokeLinejoin,
         },
         tickLabels: assign({}, baseLabelStyles, {
-          fill: blueGrey700
+          fill: blueGrey700,
         })
       }
     },

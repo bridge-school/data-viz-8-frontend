@@ -5,7 +5,11 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
+<<<<<<< HEAD
 import { connect } from 'react-redux'
+=======
+import styles from '../Styles/general.module.scss'
+>>>>>>> f56c242964e5ef6838f8bf22f032feca18494f31
 
 const CohortDetailsPage = ({ match, currentChart }) => {
     const { t } = useTranslation()
@@ -63,11 +67,10 @@ const CohortDetailsPage = ({ match, currentChart }) => {
         <>
             <div className="App">
                 <div className="wrapper">
-                    <h2>{t('cohort')} {match.params.id} {t('applicants')}</h2>
-
+                    <h2 className={styles.h2}>{t('cohort')} {match.params.id} {t('applicants')}</h2>
                     <div className="flexWrapper">
                         <Sidebar>
-                            <h3>{t('filter_applicants')}</h3>
+                            <h3 className={styles.h3}>{`${t('filter_by')}:`}</h3>
                             {/* TODO: look at how to toggle active filter (router?) */}
 
                             <BasicButtonList data={listOfFilters} />
