@@ -5,15 +5,16 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
+import { connect } from 'react-redux'
 
-const CohortDetailsPage = ({ match }) => {
+const CohortDetailsPage = ({ match, currentChart }) => {
     const { t } = useTranslation()
 
     // TODO: replace cohort data in state/api call for cohort by id
     // cohort key format: cohort-X
     let cohort;
-    for (var i in dummyData){
-        if(i.split("-")[1] === match.params.id) cohort = dummyData[i];
+    for (var i in dummyData) {
+        if (i.split("-")[1] === match.params.id) cohort = dummyData[i];
     }
 
     // TODO: make into a more generic helper function to filter a variety of ways?
@@ -21,18 +22,18 @@ const CohortDetailsPage = ({ match }) => {
         .reduce((accumulator, applicant) => {
             // TODO: return to this, find a cleaner way that doesn't through an error
             // eslint-disable-next-line
-            applicant.identities.map( identity  => {
+            applicant.identities.map(identity => {
                 // eslint-disable-next-line 
-                if(identity === "") return
-                if(!accumulator.hasOwnProperty(identity)) accumulator[identity]= 0
-                accumulator[identity] ++
+                if (identity === "") return
+                if (!accumulator.hasOwnProperty(identity)) accumulator[identity] = 0
+                accumulator[identity]++
             })
             return accumulator;
         }, {})
 
     const minorityGraphData = Object.entries(minorityBreakdown)
         .map(minority => (
-            {x: minority[0], y: minority[1]}
+            { x: minority[0], y: minority[1] }
         ))
 
     const sampleData = {
@@ -72,7 +73,12 @@ const CohortDetailsPage = ({ match }) => {
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
 
-                        <ChartMinorityPerCohort data={sampleData.minority} />
+                        {/* <span>{currentChart}</span> */}
+                        {(currentChart === "Gender Identity") && <ChartMinorityPerCohort data={sampleData.minority} />}
+                        {(currentChart === "Minority Group") && <ChartMinorityPerCohort data={sampleData.minority} />}
+                        {(currentChart === "Bootcamps") && <ChartMinorityPerCohort data={sampleData.minority} />}
+                        {(currentChart === "Employment Status") && <ChartMinorityPerCohort data={sampleData.minority} />}
+
                     </div>
                 </div>
             </div>
@@ -80,4 +86,12 @@ const CohortDetailsPage = ({ match }) => {
     )
 }
 
-export default CohortDetailsPage;
+
+const mapStateToProps = state => ({
+    ...state
+});
+
+const ConnectedCohortDetailsPage = connect(mapStateToProps)(CohortDetailsPage);
+
+// export default CohortDetailsPage;
+export default ConnectedCohortDetailsPage;

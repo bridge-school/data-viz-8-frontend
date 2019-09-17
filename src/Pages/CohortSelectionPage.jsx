@@ -29,7 +29,7 @@ const CohortSelectionPage = () => {
       return {
         disabled: cohort.y === 0,
         name: cohort.x,
-        route: (cohort.y === 0) ? "" : "/fed/cohorts/" + cohort.x.split(" ")[1]
+        route: (cohort.y === 0) ? "" : `/fed/cohorts/${cohort.x.split(" ")[1]}`
       }
     });
 
