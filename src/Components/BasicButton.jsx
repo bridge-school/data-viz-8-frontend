@@ -5,12 +5,8 @@ import classnames from 'classnames';
 import styles from '../Styles/basicButton.module.scss'
 
 class BasicButton extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        const { text, active, updateDetailsPage, currentChart } = this.props;
+        const { text, updateDetailsPage, currentChart } = this.props;
 
         return (
             <button className={
