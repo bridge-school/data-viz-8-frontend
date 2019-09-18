@@ -12,8 +12,7 @@ function ChartApplicantsPerCohort({ numberOfApplicants }) {
     return (
         <VictoryChart
             animate={{
-            duration: 1200,
-            onLoad: { duration: 1000 }
+                onLoad: { duration: 200 }
             }}
             theme={materialTheme}
             height={180}
@@ -26,14 +25,6 @@ function ChartApplicantsPerCohort({ numberOfApplicants }) {
                 y='20%' 
                 textAnchor="middle"
                 style={{ fontSize: 10 }}
-            />
-            <VictoryLabel
-                text="All Cohorts"
-                x='50%' 
-                y='88%' 
-                angle={50} 
-                textAnchor="middle"
-                style={{ fontSize: 8 }}
             />
             <VictoryLine
                 data={numberOfApplicants}
