@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import classnames from 'classnames';
 
+import {updateDetailsPage} from '../Utils/actions'
+
 import styles from '../Styles/basicButton.module.scss'
 
 class BasicButton extends Component {
@@ -26,16 +28,9 @@ const mapStateToProps = state => ({
     ...state
 });
 
-const mapDispatchToProps = dispatch => ({
-    updateDetailsPage: text => dispatch(updateDetailsPage(text))
-});
-
-const updateDetailsPage = (text) => {
-    return {
-        type: "UPDATE_DETAILS_PAGE",
-        payload: text
-    }
-}
+const mapDispatchToProps = {
+    updateDetailsPage
+};
 
 const ConnectedBasicButton = connect(mapStateToProps, mapDispatchToProps)(BasicButton);
 export default ConnectedBasicButton;

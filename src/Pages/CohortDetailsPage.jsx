@@ -4,12 +4,15 @@ import { useTranslation } from 'react-i18next'
 import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
+import Loader from "../Components/Loader";
+
 import dummyData from '../DummyData/cohortDummyData'
 import { connect } from 'react-redux'
 import {applicantsToGraphData} from '../Utils/dataTransform.utils'
 import styles from '../Styles/general.module.scss'
+import {updateDetailsPage} from '../Utils/actions'
 
-const CohortDetailsPage = ({ match, currentChart }) => {
+const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }) => {
     const { t } = useTranslation()
 
     // TODO: replace cohort data in state/api call for cohort by id
@@ -58,10 +61,14 @@ const CohortDetailsPage = ({ match, currentChart }) => {
     } )
 
     //if currentChart key not defined, set to first listed filter
-    if(currentChart===null) setDefaultFilter(listOfFilters[0].key);
+    if(currentChart===null) updateDetailsPage(listOfFilters[0].key);
 
     return (
         <>
+            {(isLoading) &&
+                <Loader />
+            }
+            
             <div className="App">
                 <div className="wrapper">
                     <h2 className={styles.h2}>{t('cohort')} {match.params.id} {t('applicants')}</h2>
@@ -84,21 +91,12 @@ const CohortDetailsPage = ({ match, currentChart }) => {
 }
 
 const mapStateToProps = state => ({
-    ...state
+    ...state,
 });
 
-const mapDispatchToProps = dispatch => ({
-    setDefaultFilter: text => dispatch(setDefaultFilter(text))
-});
-
-const setDefaultFilter = (text) => {
-    console.log("setting default filter")
-    console.log(text)
-    return {
-        type: "UPDATE_DETAILS_PAGE",
-        payload: text
-    }
-}
+const mapDispatchToProps = {
+    updateDetailsPage
+};
 
 const ConnectedCohortDetailsPage = connect(mapStateToProps, mapDispatchToProps)(CohortDetailsPage);
 export default ConnectedCohortDetailsPage;
