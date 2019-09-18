@@ -5,19 +5,20 @@ import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
+import { connect } from 'react-redux'
 import {applicantsToGraphData} from '../Utils/dataTransform.utils'
 import styles from '../Styles/general.module.scss'
 
-const CohortDetailsPage = ({ match }) => {
+const CohortDetailsPage = ({ match, currentChart }) => {
     const { t } = useTranslation()
 
     // TODO: replace cohort data in state/api call for cohort by id
     // cohort key format: cohort-X
     let cohort;
-    for (var i in dummyData){
-        if(i.split("-")[1] === match.params.id) cohort = dummyData[i];
+    for (var i in dummyData) {
+        if (i.split("-")[1] === match.params.id) cohort = dummyData[i];
     }
-
+  
     const sampleData = {
         minority: applicantsToGraphData(cohort.applicants, 'identities'),
         bootcamps: applicantsToGraphData(cohort.applicants, 'bootcamps'),
@@ -56,7 +57,12 @@ const CohortDetailsPage = ({ match }) => {
 
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
-                        <ChartMinorityPerCohort data={sampleData.minority} />
+
+                        {(currentChart === "Gender Identity") && <ChartMinorityPerCohort data={sampleData.minority} />}
+                        {(currentChart === "Minority Group") && <ChartMinorityPerCohort data={sampleData.minority} />}
+                        {(currentChart === "Bootcamps") && <ChartMinorityPerCohort data={sampleData.minority} />}
+                        {(currentChart === "Employment Status") && <ChartMinorityPerCohort data={sampleData.minority} />}
+
                     </div>
                 </div>
             </div>
@@ -64,4 +70,10 @@ const CohortDetailsPage = ({ match }) => {
     )
 }
 
-export default CohortDetailsPage;
+const mapStateToProps = state => ({
+    ...state
+});
+
+const ConnectedCohortDetailsPage = connect(mapStateToProps)(CohortDetailsPage);
+
+export default ConnectedCohortDetailsPage;

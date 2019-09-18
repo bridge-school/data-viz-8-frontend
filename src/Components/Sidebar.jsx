@@ -3,12 +3,11 @@ import React from "react";
 import styles from '../Styles/sidebar.module.scss'
 
 function Sidebar(props) {
-    return(
+    return (
         <>
             <section className={styles.sidebar}>
                 {props.children}
             </section>
-
         </>
     )
 }

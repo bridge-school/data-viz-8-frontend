@@ -8,8 +8,8 @@ const CohortSelectionPage = () => {
   const { t } = useTranslation()
   //TODO: replace this with cohort type API call
   const cohorts = [];
-  for (var i in dummyData){
-    if(dummyData[i].type === "frontEnd"){
+  for (var i in dummyData) {
+    if (dummyData[i].type === "frontEnd") {
       dummyData[i].cohortNumber = i.split("-")[1];
       cohorts.push(dummyData[i]);
     }
@@ -22,14 +22,14 @@ const CohortSelectionPage = () => {
         x: `${t('cohort')} ${cohort.cohortNumber}`,
         y: cohort.applicants.length
       }
-  ))
+    ))
 
   const cohortRouteMap = cohortApplicationsGraphData
     .map((cohort) => {
       return {
         disabled: cohort.y === 0,
         name: cohort.x,
-        route: (cohort.y === 0) ? "" : "/fed/cohorts/" + cohort.x.split(" ")[1]
+        route: (cohort.y === 0) ? "" : `/fed/cohorts/${cohort.x.split(" ")[1]}`
       }
     });
 
