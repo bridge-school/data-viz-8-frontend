@@ -6,6 +6,7 @@ import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import dummyData from '../DummyData/cohortDummyData'
 import { connect } from 'react-redux'
+import {applicantsToGraphData} from '../Utils/dataTransform.utils'
 import styles from '../Styles/general.module.scss'
 
 const CohortDetailsPage = ({ match, currentChart }) => {
@@ -17,28 +18,12 @@ const CohortDetailsPage = ({ match, currentChart }) => {
     for (var i in dummyData) {
         if (i.split("-")[1] === match.params.id) cohort = dummyData[i];
     }
-
-    // TODO: make into a more generic helper function to filter a variety of ways?
-    const minorityBreakdown = cohort.applicants
-        .reduce((accumulator, applicant) => {
-            // TODO: return to this, find a cleaner way that doesn't through an error
-            // eslint-disable-next-line
-            applicant.identities.map(identity => {
-                // eslint-disable-next-line 
-                if (identity === "") return
-                if (!accumulator.hasOwnProperty(identity)) accumulator[identity] = 0
-                accumulator[identity]++
-            })
-            return accumulator;
-        }, {})
-
-    const minorityGraphData = Object.entries(minorityBreakdown)
-        .map(minority => (
-            { x: minority[0], y: minority[1] }
-        ))
-
+  
     const sampleData = {
-        minority: minorityGraphData
+        minority: applicantsToGraphData(cohort.applicants, 'identities'),
+        bootcamps: applicantsToGraphData(cohort.applicants, 'bootcamps'),
+        employment: applicantsToGraphData(cohort.applicants, "employmentStatus"),
+        gender: applicantsToGraphData(cohort.applicants, "gender")
     };
 
     const listOfFilters = [
