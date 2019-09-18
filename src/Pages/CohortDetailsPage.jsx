@@ -28,22 +28,37 @@ const CohortDetailsPage = ({ match, currentChart }) => {
 
     const listOfFilters = [
         {
+            key: "gender",
             text: t('gender_identity'),
             active: false
         },
         {
+            key: "minority",
             text: t('minority_group'),
             active: true
         },
         {
+            key: "bootcamps",
             text: t('bootcamps'),
             active: false
         },
         {
+            key: "employment",
             text: t('employment_status'),
             active: false
         },
-    ];
+    ].sort( (a, b) => {
+        if ( a.text < b.text ){
+            return -1;
+          }
+        if ( a.text > b.text ){
+            return 1;
+          }
+        return 0;
+    } )
+
+    //if currentChart key not defined, set to first listed filter
+    if(currentChart===null) setDefaultFilter(listOfFilters[0].key);
 
     return (
         <>
@@ -51,17 +66,15 @@ const CohortDetailsPage = ({ match, currentChart }) => {
                 <div className="wrapper">
                     <h2 className={styles.h2}>{t('cohort')} {match.params.id} {t('applicants')}</h2>
                     <div className="flexWrapper">
+
                         <Sidebar>
                             <h3 className={styles.h3}>{`${t('filter_by')}:`}</h3>
-                            {/* TODO: look at how to toggle active filter (router?) */}
-
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
 
-                        {(currentChart === "Gender Identity") && <ChartMinorityPerCohort data={sampleData.minority} />}
-                        {(currentChart === "Minority Group") && <ChartMinorityPerCohort data={sampleData.minority} />}
-                        {(currentChart === "Bootcamps") && <ChartMinorityPerCohort data={sampleData.minority} />}
-                        {(currentChart === "Employment Status") && <ChartMinorityPerCohort data={sampleData.minority} />}
+                       { (currentChart) &&
+                           <ChartMinorityPerCohort data={sampleData[currentChart]} />
+                       } 
 
                     </div>
                 </div>
@@ -74,6 +87,18 @@ const mapStateToProps = state => ({
     ...state
 });
 
-const ConnectedCohortDetailsPage = connect(mapStateToProps)(CohortDetailsPage);
+const mapDispatchToProps = dispatch => ({
+    setDefaultFilter: text => dispatch(setDefaultFilter(text))
+});
 
+const setDefaultFilter = (text) => {
+    console.log("setting default filter")
+    console.log(text)
+    return {
+        type: "UPDATE_DETAILS_PAGE",
+        payload: text
+    }
+}
+
+const ConnectedCohortDetailsPage = connect(mapStateToProps, mapDispatchToProps)(CohortDetailsPage);
 export default ConnectedCohortDetailsPage;

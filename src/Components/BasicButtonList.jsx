@@ -6,7 +6,8 @@ class BasicButtonList extends Component {
         const { data } = this.props;
         return (
             <>
-                {data.map(({ text, active }, index) => <BasicButton key={index} text={text} active={active} />)}
+                {data.map(({ key, text, active }, index) => 
+                    <BasicButton key={index} dataKey={key} text={text} active={active} />)}
             </>
         );
     }

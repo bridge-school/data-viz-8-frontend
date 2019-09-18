@@ -6,13 +6,15 @@ import styles from '../Styles/basicButton.module.scss'
 
 class BasicButton extends Component {
     render() {
-        const { text, updateDetailsPage, currentChart } = this.props;
+        const { dataKey, text, updateDetailsPage, currentChart } = this.props;
 
         return (
-            <button className={
-                (text === currentChart) ? (classnames(styles.button, styles.active)) : (styles.button)
+            <button 
+            key={dataKey}
+            className={
+                (dataKey === currentChart) ? (classnames(styles.button, styles.active)) : (styles.button)
             }
-                onClick={() => updateDetailsPage(text)} // update store
+                onClick={() => updateDetailsPage(dataKey)} // update store
             >
                 {text}
             </button >
@@ -28,10 +30,10 @@ const mapDispatchToProps = dispatch => ({
     updateDetailsPage: text => dispatch(updateDetailsPage(text))
 });
 
-const updateDetailsPage = (id) => {
+const updateDetailsPage = (text) => {
     return {
         type: "UPDATE_DETAILS_PAGE",
-        payload: id
+        payload: text
     }
 }
 
