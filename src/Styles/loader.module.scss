@@ -1,0 +1,35 @@
+@import './sharedVariables';
+
+.loader{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.bridgeLogo,
+.bridgeLogo *{
+    fill: $bridgePurple;
+    animation: colorAnimation 2s infinite;
+}
+
+.bridgeLogo{
+    display: block;
+    position: absolute;
+    width: 15%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+@keyframes colorAnimation{
+    0%{
+        fill: $bridgePurple;
+    }
+    50%{
+        fill: $bridgePink;
+    }
+    100%{
+        fill: $bridgePurple;
+    }
+}
