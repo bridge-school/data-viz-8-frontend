@@ -1,4 +1,5 @@
-const API_BASE_URL = process.env.NODE_ENV === "development"
+const API_BASE_URL = 
+  process.env.NODE_ENV === "development"
     ? ""
     : `http://${process.env.REACT_APP_PROJECT_NAME}-backend.bridgeschoolapp.io`;
 
