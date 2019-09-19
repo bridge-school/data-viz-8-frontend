@@ -76,24 +76,18 @@ const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }
 
     return (
         <>
-            {(isLoading) &&
-                <Loader />
-            }
-            
+            {isLoading && <Loader />}
             <div className="App">
                 <div className="wrapper">
                     <h2 className={styles.h2}>{t('cohort')} {match.params.id} {t('applicants')}</h2>
                     <div className="flexWrapper">
-
                         <Sidebar>
                             <h3 className={styles.h3}>{`${t('filter_by')}:`}</h3>
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
-
                        { (currentChart) &&
                            <ChartMinorityPerCohort data={formattedGraphData[currentChart]} />
                        } 
-
                     </div>
                 </div>
             </div>
