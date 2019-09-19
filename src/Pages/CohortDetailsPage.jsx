@@ -1,32 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next'
+import { connect } from 'react-redux'
 
 import Sidebar from '../Components/Sidebar'
 import ChartMinorityPerCohort from '../Components/ChartMinorityPerCohort';
 import BasicButtonList from "../Components/BasicButtonList";
 import Loader from "../Components/Loader";
 
-import dummyData from '../DummyData/cohortDummyData'
-import { connect } from 'react-redux'
-import {applicantsToGraphData} from '../Utils/dataTransform.utils'
 import styles from '../Styles/general.module.scss'
-import {updateDetailsPage} from '../Utils/actions'
+import emptyGraphData from '../DummyData/emptyGraphData-cohortDetailsPage'
+import { applicantsToGraphData } from '../Utils/dataTransform.utils'
+import { updateDetailsPage } from '../Utils/actions'
+import { request } from '../backend-request'
 
 const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }) => {
+    const [graphData, setGraphData] = useState(emptyGraphData)
     const { t } = useTranslation()
+    const cohortId = match.params.id
 
-    // TODO: replace cohort data in state/api call for cohort by id
-    // cohort key format: cohort-X
-    let cohort;
-    for (var i in dummyData) {
-        if (i.split("-")[1] === match.params.id) cohort = dummyData[i];
-    }
-  
-    const sampleData = {
-        minority: applicantsToGraphData(cohort.applicants, 'identities'),
-        bootcamps: applicantsToGraphData(cohort.applicants, 'bootcamps'),
-        employment: applicantsToGraphData(cohort.applicants, "employmentStatus"),
-        gender: applicantsToGraphData(cohort.applicants, "gender")
+    useEffect(() => {
+        const fetchCohortDetails = async () => {
+            const response = await request(
+                `cohorts/cohort?cohortType=front%20end&cohortNumber=${cohortId}`
+            )
+            const parsedResponse = await response.json()
+            
+            setGraphData(parsedResponse.data[0])
+        }
+        fetchCohortDetails()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cohortId])
+
+    let formattedGraphData
+
+    formattedGraphData = {
+        minority: applicantsToGraphData(graphData.applicants, 'identities'),
+        bootcamps: applicantsToGraphData(graphData.applicants, 'bootcamps'),
+        employment: applicantsToGraphData(graphData.applicants, "employmentStatus"),
+        gender: applicantsToGraphData(graphData.applicants, "gender")
     };
 
     const listOfFilters = [
@@ -65,24 +76,18 @@ const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }
 
     return (
         <>
-            {(isLoading) &&
-                <Loader />
-            }
-            
+            {isLoading && <Loader />}
             <div className="App">
                 <div className="wrapper">
                     <h2 className={styles.h2}>{t('cohort')} {match.params.id} {t('applicants')}</h2>
                     <div className="flexWrapper">
-
                         <Sidebar>
                             <h3 className={styles.h3}>{`${t('filter_by')}:`}</h3>
                             <BasicButtonList data={listOfFilters} />
                         </Sidebar>
-
                        { (currentChart) &&
-                           <ChartMinorityPerCohort data={sampleData[currentChart]} />
+                           <ChartMinorityPerCohort data={formattedGraphData[currentChart]} />
                        } 
-
                     </div>
                 </div>
             </div>
