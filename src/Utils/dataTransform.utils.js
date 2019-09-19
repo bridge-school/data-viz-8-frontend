@@ -37,10 +37,7 @@ const checkNormalizedAnswers = answer => {
 // take in data array (applicants), and categorize by filterKey
 // returns: array of objs that can be provided to VictoryJS chart
 export const applicantsToGraphData = (applicants, filterKey) => {
-    console.log('🥑', applicants)
-    if (applicants === []) {
-        return
-    }
+    if (applicants === [] || applicants === undefined) return
     
     const dataSetObj = applicants
         .reduce((accumulator, applicant) => (

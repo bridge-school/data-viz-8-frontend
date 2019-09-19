@@ -1,25 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next'
 import BasicLinkList from '../Components/BasicLinkList'
 import ChartApplicantsPerCohort from '../Components/ChartApplicantsPerCohort'
 import dummyData from '../DummyData/cohortDummyData'
+import emptyGraphData from '../DummyData/emptyGraphData-cohortSelectionPage'
+import { request } from '../backend-request'
 
 const CohortSelectionPage = () => {
+  const [graphData, setGraphData] = useState(emptyGraphData)
   const { t } = useTranslation()
-  //TODO: replace this with cohort type API call
-  const cohorts = [];
-  for (var i in dummyData) {
-    if (dummyData[i].type === "frontEnd") {
-      dummyData[i].cohortNumber = i.split("-")[1];
-      cohorts.push(dummyData[i]);
+  useEffect(() => {
+    const fetchCohortDetails = async () => {
+        const response = await request(
+            `cohorts?cohortType=front%20end`
+        )
+        const parsedResponse = await response.json()
+        
+        setGraphData(parsedResponse.data)
     }
-  }
-  cohorts.sort((a, b) => (a.cohortNumber - b.cohortNumber));
+    fetchCohortDetails()
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
-  const cohortApplicationsGraphData = cohorts
+  const cohortApplicationsGraphData = graphData
     .map((cohort) => (
       {
-        x: `${t('cohort')} ${cohort.cohortNumber}`,
+        x: `${t('cohort')} ${cohort.id.slice(7,9)}`,
         y: cohort.applicants.length
       }
     ))

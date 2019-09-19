@@ -8,20 +8,13 @@ import BasicButtonList from "../Components/BasicButtonList";
 import Loader from "../Components/Loader";
 
 import styles from '../Styles/general.module.scss'
-import dummyData from '../DummyData/cohortDummyData'
-import {applicantsToGraphData} from '../Utils/dataTransform.utils'
-import {updateDetailsPage} from '../Utils/actions'
+import emptyGraphData from '../DummyData/emptyGraphData-cohortDetailsPage'
+import { applicantsToGraphData } from '../Utils/dataTransform.utils'
+import { updateDetailsPage } from '../Utils/actions'
 import { request } from '../backend-request'
 
-
-// useEffect(() => {
-//     // Update the document title using the browser API
-//     document.title = `You clicked ${count} times`;
-//   });
-
 const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }) => {
-    // const [isLoading, setIsLoading] = useState(false)
-    const [graphData, setGraphData] = useState([])
+    const [graphData, setGraphData] = useState(emptyGraphData)
     const { t } = useTranslation()
     const cohortId = match.params.id
 
@@ -38,23 +31,13 @@ const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cohortId])
 
-    // TODO: replace cohort data in state/api call for cohort by id
-    // cohort key format: cohort-X
-    let cohort;
-    for (var i in dummyData) {
-        if (i.split("-")[1] === match.params.id) cohort = dummyData[i];
-    }
-    console.log(graphData.applicants)
-    console.log(cohort.applicants)
+    let formattedGraphData
 
-
-    let sampleData
-
-    sampleData = {
-        minority: applicantsToGraphData(cohort.applicants, 'identities'),
-        bootcamps: applicantsToGraphData(cohort.applicants, 'bootcamps'),
-        employment: applicantsToGraphData(cohort.applicants, "employmentStatus"),
-        gender: applicantsToGraphData(cohort.applicants, "gender")
+    formattedGraphData = {
+        minority: applicantsToGraphData(graphData.applicants, 'identities'),
+        bootcamps: applicantsToGraphData(graphData.applicants, 'bootcamps'),
+        employment: applicantsToGraphData(graphData.applicants, "employmentStatus"),
+        gender: applicantsToGraphData(graphData.applicants, "gender")
     };
 
     const listOfFilters = [
@@ -108,7 +91,7 @@ const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }
                         </Sidebar>
 
                        { (currentChart) &&
-                           <ChartMinorityPerCohort data={sampleData[currentChart]} />
+                           <ChartMinorityPerCohort data={formattedGraphData[currentChart]} />
                        } 
 
                     </div>
