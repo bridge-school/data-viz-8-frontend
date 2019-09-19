@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next'
 import BasicLinkList from '../Components/BasicLinkList'
 import ChartApplicantsPerCohort from '../Components/ChartApplicantsPerCohort'
-import dummyData from '../DummyData/cohortDummyData'
 import emptyGraphData from '../DummyData/emptyGraphData-cohortSelectionPage'
 import { request } from '../backend-request'
 
