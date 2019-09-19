@@ -48,7 +48,9 @@ const CohortDetailsPage = ({ match, currentChart, isLoading, updateDetailsPage }
     console.log(cohort.applicants)
 
 
-    const sampleData = {
+    let sampleData
+
+    sampleData = {
         minority: applicantsToGraphData(cohort.applicants, 'identities'),
         bootcamps: applicantsToGraphData(cohort.applicants, 'bootcamps'),
         employment: applicantsToGraphData(cohort.applicants, "employmentStatus"),

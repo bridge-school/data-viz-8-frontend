@@ -9,11 +9,11 @@ function ChartMinorityPerCohort({ data }) {
         return `${Math.round(numberOfResponses/totalNumberOfApplicants*100)}%`
     }
 
-    const maxDomainValue =
-        data
-            .map(item => item.y)
-            .reduce((currentMax, currentItem) => Math.max(currentMax, currentItem))
-            + 10
+    const maxDomainValue = 20
+        // data
+        //     .map(item => item.y)
+        //     .reduce((currentMax, currentItem) => Math.max(currentMax, currentItem))
+        //     + 10
     
     return (
         <VictoryChart
